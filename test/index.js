@@ -70,6 +70,7 @@ test("open property toggles content", (assert) => {
       assert.ok(element.open)
       if (!detailsElementIsNative) {
         assert.equal(summary.getAttribute("aria-expanded"), "true")
+        assert.equal(summary.getAttribute("aria-hidden"), "false")
       }
 
       element.open = false
@@ -79,6 +80,7 @@ test("open property toggles content", (assert) => {
         assert.notOk(element.open)
         if (!detailsElementIsNative) {
           assert.equal(summary.getAttribute("aria-expanded"), "false")
+          assert.equal(summary.getAttribute("aria-hidden"), "true")
         }
         defer(() => {
           assert.equal(toggleEventCount, 2)
@@ -106,6 +108,7 @@ test("open attribute toggles content", (assert) => {
       assert.notEqual(content.offsetHeight, 0)
       if (!detailsElementIsNative) {
         assert.equal(summary.getAttribute("aria-expanded"), "true")
+        assert.equal(summary.getAttribute("aria-hidden"), "false")
       }
 
       element.removeAttribute("open")
@@ -114,6 +117,7 @@ test("open attribute toggles content", (assert) => {
         assert.equal(content.offsetHeight, 0)
         if (!detailsElementIsNative) {
           assert.equal(summary.getAttribute("aria-expanded"), "false")
+          assert.equal(summary.getAttribute("aria-hidden"), "true")
         }
         done()
       })
@@ -138,6 +142,7 @@ test("click <summary> toggles content", (assert) => {
       assert.ok(element.hasAttribute("open"))
       if (!detailsElementIsNative) {
         assert.equal(summary.getAttribute("aria-expanded"), "true")
+        assert.equal(summary.getAttribute("aria-hidden"), "false")
       }
 
       clickElement(summary, function() {
@@ -146,6 +151,7 @@ test("click <summary> toggles content", (assert) => {
         assert.notOk(element.hasAttribute("open"))
         if (!detailsElementIsNative) {
           assert.equal(summary.getAttribute("aria-expanded"), "false")
+          assert.equal(summary.getAttribute("aria-hidden"), "true")
         }
         done()
       })
@@ -173,6 +179,7 @@ test("click <summary> child toggles content", (assert) => {
       assert.ok(element.hasAttribute("open"))
       if (!detailsElementIsNative) {
         assert.equal(summary.getAttribute("aria-expanded"), "true")
+        assert.equal(summary.getAttribute("aria-hidden"), "false")
       }
 
       clickElement(summaryChild, function() {
@@ -181,6 +188,7 @@ test("click <summary> child toggles content", (assert) => {
         assert.notOk(element.hasAttribute("open"))
         if (!detailsElementIsNative) {
           assert.equal(summary.getAttribute("aria-expanded"), "false")
+          assert.equal(summary.getAttribute("aria-hidden"), "true")
         }
         done()
       })
