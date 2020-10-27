@@ -1,11 +1,11 @@
 /*!
- * Details Element Polyfill 2.4.1
+ * Details Element Polyfill 2.4.2
  * Copyright © 2020 Javan Makhmali
  * Released under the MIT license
  */
 (function() {
   "use strict";
-  var element = typeof document != "undefined" ? document.createElement("details") : undefined;
+  var element = typeof document != "undefined" ? document.createElement("details") : {};
   var elementIsNative = typeof HTMLDetailsElement != "undefined" && element instanceof HTMLDetailsElement;
   var support = {
     open: "open" in element || elementIsNative,
